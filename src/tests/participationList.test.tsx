@@ -30,16 +30,16 @@ describe("`<ParticipationListItem>`", () => {
         expect(getByText(/Ops. Eventos não encontrados!/i)).toBeInTheDocument();
     });
 
-    // test("Render max 3 itens on list", async () => {
-    //     const response = await getCharacter(1009148);
-    //     const { findAllByTestId } = render(
-    //         <ListInformationItem
-    //             list={response[0]?.events?.items}
-    //             tagName="name"
-    //             information="Eventos"
-    //         />
-    //     );
-    //     const list = await findAllByTestId("informationLi");
-    //     expect(list.length).toBeLessThan(4);
-    // });
+    test("Render max 3 itens on list", async () => {
+        const response = await getCharacter(1009148);
+        const { findAllByTestId } = render(
+            <ListInformationItem
+                list={response[0]?.events?.items}
+                tagName="name"
+                information="Eventos"
+            />
+        );
+        const list = await findAllByTestId("informationLi");
+        expect(list.length).toBeLessThan(4);
+    });
 });

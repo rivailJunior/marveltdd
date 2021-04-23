@@ -21,17 +21,17 @@ describe("`<App>`", () => {
         expect(container).toMatchSnapshot();
     });
 
-    // test("Show information before loading list and after that show 10", async () => {
-    //     const promise = getCharacters(10);
-    //     const { getByText, findAllByTestId } = render(
-    //         <RequestProvider values={{ getCharacters: promise }}>
-    //             <App />
-    //         </RequestProvider>
-    //     );
-    //     expect(getByText(/nenhum personagem encontrado/i)).toBeInTheDocument();
+    test("Show information before loading list and after that show 10", async () => {
+        const promise = getCharacters(10);
+        const { getByText, findAllByTestId } = render(
+            <RequestProvider values={{ getCharacters: promise }}>
+                <App />
+            </RequestProvider>
+        );
+        expect(getByText(/nenhum personagem encontrado/i)).toBeInTheDocument();
 
-    //     await act(() => promise);
-    //     // const listLi = await findAllByTestId("marvelLi");
-    //     // expect(listLi).toHaveLength(10); // sometimes its return only one
-    // });
+        await act(() => promise);
+        // const listLi = await findAllByTestId("marvelLi");
+        // expect(listLi).toHaveLength(10); // sometimes its return only one
+    });
 });

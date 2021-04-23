@@ -23,24 +23,24 @@ describe("`<MarvelList>`", () => {
         expect(getByText(/nenhum personagem encontrado/i)).toBeInTheDocument();
     });
 
-    // test("Render with 10 characters in list", async () => {
-    //     const result = await getCharacters(10);
-    //     const { findAllByTestId } = render(
-    //         <MarvelList data={result.results} />
-    //     );
-    //     const list = await findAllByTestId("marvelLi");
-    //     expect(list).toHaveLength(10);
-    // });
+    test("Render with 10 characters in list", async () => {
+        const result = await getCharacters(10);
+        const { findAllByTestId } = render(
+            <MarvelList data={result.results} />
+        );
+        const list = await findAllByTestId("marvelLi");
+        expect(list).toHaveLength(10);
+    });
 
-    // test("Call another page when click on list item", async () => {
-    //     const result = await getCharacters(10);
-    //     const { getAllByTestId, getByTestId } = render(
-    //         <MemoryRouter initialEntries={["/my/initial/route"]}>
-    //             <MarvelList data={result.results} />
-    //         </MemoryRouter>
-    //     );
+    test("Call another page when click on list item", async () => {
+        const result = await getCharacters(10);
+        const { getAllByTestId, getByTestId } = render(
+            <MemoryRouter initialEntries={["/my/initial/route"]}>
+                <MarvelList data={result.results} />
+            </MemoryRouter>
+        );
 
-    //     const btnShowDescription = getAllByTestId("marvelLi");
-    //     fireEvent.click(btnShowDescription[0]);
-    // });
+        const btnShowDescription = getAllByTestId("marvelLi");
+        fireEvent.click(btnShowDescription[0]);
+    });
 });
