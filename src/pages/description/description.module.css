@@ -1,0 +1,13 @@
+.picture {
+    height: 100%;
+    width: 100%;
+}
+
+.divPicture {
+    overflow: hidden;
+    object-fit: contain;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+}

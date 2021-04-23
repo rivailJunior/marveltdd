@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`\`<ParticipationListItem>\` Render correctly 1`] = `
+<div
+  className="defaultLabel"
+>
+  Ops. 
+  Eventos
+   não encontrados!
+</div>
+`;

@@ -1,0 +1,283 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`\`<App>\` Render correctly 1`] = `
+<div>
+  <div
+    className="jumbotron"
+  >
+    <div
+      className="container"
+    >
+      <h1
+        className="labelHeader"
+        data-testid="labelheader"
+      >
+        Busca de personagens
+      </h1>
+      <div
+        className="row"
+      >
+        <div
+          className="col-md-3"
+        >
+          <div
+            className="mb-3 input-group"
+          >
+            <input
+              aria-label="Busque personagens"
+              className="form-control"
+              data-testid="inputSearch"
+              onChange={[Function]}
+              placeholder="Search"
+              value=""
+            />
+            <div
+              className="input-group-append"
+              data-testid="btnSearch"
+            >
+              <span
+                className="input-group-text"
+              >
+                OK
+              </span>
+            </div>
+            <div
+              className="hideClear input-group-append"
+              data-testid="btnClear"
+              onClick={[Function]}
+            >
+              <span
+                className="input-group-text"
+              >
+                X
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="row"
+      >
+        <div
+          className="col-md-12 col-12"
+        >
+          <div
+            className="labelHeader hideList"
+          >
+            Nenhum personagem encontrado
+          </div>
+          <div
+            className="showList list-group list-group-flush"
+            onKeyDown={[Function]}
+          >
+            <div
+              className="list-group-item"
+              data-rb-event-key={null}
+              disabled={false}
+              onClick={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "transparent",
+                }
+              }
+            >
+              <div
+                className="row"
+              >
+                <div
+                  className="col-md-2"
+                />
+                <div
+                  className="col-md-2"
+                >
+                  <div
+                    className="defaultLabel"
+                  >
+                    Personagem
+                  </div>
+                </div>
+                <div
+                  className="d-none d-lg-block col-md-4"
+                >
+                  <div
+                    className="defaultLabel"
+                  >
+                    Séries
+                  </div>
+                </div>
+                <div
+                  className="d-none d-lg-block col-md-4"
+                >
+                  <div
+                    className="defaultLabel"
+                  >
+                    Eventos
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="listGroup list-group"
+            onKeyDown={[Function]}
+          >
+            <div
+              className="list-group-item"
+              data-rb-event-key={null}
+              data-testid="marvelLi"
+              disabled={false}
+              onClick={[Function]}
+            >
+              <div
+                className="row"
+              >
+                <div
+                  className="col-lg col-md-2 col-6"
+                >
+                  <div
+                    className="listImgDiv"
+                  >
+                    <img
+                      alt=""
+                      className="thumbImg rounded"
+                      src="."
+                    />
+                  </div>
+                </div>
+                <div
+                  className="col-lg col-md-2 col-6"
+                >
+                  <div
+                    className="defaultLabel"
+                  >
+                    
+                  </div>
+                </div>
+                <div
+                  className="d-none d-lg-block col-md-4"
+                >
+                  <div
+                    className="defaultLabel"
+                  >
+                    Ops. 
+                    Séries
+                     não encontrados!
+                  </div>
+                </div>
+                <div
+                  className="d-none d-lg-block col-md-4"
+                >
+                  <div
+                    className="defaultLabel"
+                  >
+                    Ops. 
+                    Eventos
+                     não encontrados!
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="paginationDiv"
+  >
+    <ul
+      className="noPagination pagination"
+      data-testid="paginationDiv"
+    >
+      <li
+        className="page-item"
+      >
+        <a
+          className="page-link"
+          href="#"
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          role="button"
+        >
+          <span
+            aria-hidden="true"
+          >
+            «
+          </span>
+          <span
+            className="sr-only"
+          >
+            First
+          </span>
+        </a>
+      </li>
+      <li
+        className="page-item"
+      >
+        <a
+          className="page-link"
+          href="#"
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          role="button"
+        >
+          <span
+            aria-hidden="true"
+          >
+            ‹
+          </span>
+          <span
+            className="sr-only"
+          >
+            Previous
+          </span>
+        </a>
+      </li>
+      <li
+        className="page-item"
+      >
+        <a
+          className="page-link"
+          href="#"
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          role="button"
+        >
+          <span
+            aria-hidden="true"
+          >
+            ›
+          </span>
+          <span
+            className="sr-only"
+          >
+            Next
+          </span>
+        </a>
+      </li>
+      <li
+        className="page-item"
+      >
+        <a
+          className="page-link"
+          href="#"
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          role="button"
+        >
+          <span
+            aria-hidden="true"
+          >
+            »
+          </span>
+          <span
+            className="sr-only"
+          >
+            Last
+          </span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+`;

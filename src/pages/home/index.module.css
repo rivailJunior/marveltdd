@@ -1,0 +1,8 @@
+.mainContainer {
+    background-color: #E5E5E5;
+}
+
+.paginationDiv {
+    display: flex;
+    justify-content: center;
+}

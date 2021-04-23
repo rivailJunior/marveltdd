@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`\`<MarvelHeader>\` Render correctly 1`] = `
+<nav
+  className="marvelHeader navbar navbar-expand-lg navbar-light bg-light"
+>
+  <a
+    className="navbar-brand"
+    href="#home"
+  >
+    Objective
+  </a>
+  <button
+    aria-label="Toggle navigation"
+    className="navbar-toggler collapsed"
+    onClick={[Function]}
+    type="button"
+  >
+    <span
+      className="navbar-toggler-icon"
+    />
+  </button>
+  <div
+    aria-expanded={null}
+    className="justify-content-end navbar-collapse collapse"
+  >
+    <span
+      className="labelName navbar-text"
+    >
+      Rivail
+      <a
+        href="#login"
+      >
+        Teste front-end
+      </a>
+    </span>
+  </div>
+</nav>
+`;

@@ -1,0 +1,7 @@
+.noPagination {
+    display: none !important;
+}
+
+.showPagination {
+    display: flex;
+}

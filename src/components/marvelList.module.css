@@ -1,0 +1,50 @@
+.listGroup>div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-top: 1%;
+    height: 88px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 0px 5px #00000033;
+    border-radius: 4px;
+}
+
+.defaultLabel {
+    text-align: left;
+    font: normal normal normal 14px/16px PT Sans;
+    letter-spacing: 0px;
+    color: #555555;
+}
+
+.thumbImg {
+    max-width: 25%;
+    max-width: 48px;
+    max-height: 48px;
+}
+
+.list {
+    list-style: none;
+    top: 298px;
+    left: 494px;
+    width: 296px;
+    height: 49px;
+    text-align: left;
+    font: normal normal normal 14px/16px PT Sans;
+    letter-spacing: 0px;
+    color: #555555;
+    opacity: 1;
+}
+
+.listImgDiv {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.showList {
+    display: block;
+}
+
+.hideList {
+    display: none !important;
+}

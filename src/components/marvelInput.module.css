@@ -1,0 +1,7 @@
+.showClear {
+    display: block;
+}
+
+.hideClear {
+    display: none !important;
+}

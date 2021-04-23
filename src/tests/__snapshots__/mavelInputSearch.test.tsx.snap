@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`\`<MarvelInputSearch>\` Render correctly 1`] = `
+<div
+  className="mb-3 input-group"
+>
+  <input
+    aria-label="Busque personagens"
+    className="form-control"
+    data-testid="inputSearch"
+    onChange={[Function]}
+    placeholder="Search"
+    value=""
+  />
+  <div
+    className="input-group-append"
+    data-testid="btnSearch"
+  >
+    <span
+      className="input-group-text"
+    >
+      OK
+    </span>
+  </div>
+  <div
+    className="hideClear input-group-append"
+    data-testid="btnClear"
+    onClick={[Function]}
+  >
+    <span
+      className="input-group-text"
+    >
+      X
+    </span>
+  </div>
+</div>
+`;
