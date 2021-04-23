@@ -1,7 +1,6 @@
 import React from "react";
-import { render, cleanup, screen } from "@testing-library/react";
+import { render, cleanup } from "@testing-library/react";
 import renderer from "react-test-renderer";
-import { getCharacter } from "../provider/service";
 import { ListInformationItem } from "../components/listInformationItem";
 import { responseValueMock } from "../characterTypes/requestValueMock";
 

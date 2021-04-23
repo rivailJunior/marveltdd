@@ -10,12 +10,6 @@ import { responseValueMock } from "../characterTypes/requestValueMock";
 
 afterEach(cleanup);
 
-const renderWithRouter = (ui: any, { route = "/" } = {}) => {
-    window.history.pushState({}, "Test page", route);
-
-    return render(ui, { wrapper: BrowserRouter });
-};
-
 describe("`<MarvelList>`", () => {
     test("Render correctly", () => {
         const container = renderer.create(
@@ -46,19 +40,4 @@ describe("`<MarvelList>`", () => {
             ).toBeInTheDocument();
         }
     });
-
-    // test("Call another page when click on list item", () => {
-    //     const { getAllByTestId } = renderWithRouter(
-    //         <MarvelList
-    //             data={responseValueMock.data.results}
-    //             errInfor={false}
-    //         />
-    //     );
-
-    //     const btnShowDescription = getAllByTestId("marvelLi");
-    //     const leftClick = { button: 0 };
-    //     fireEvent.click(btnShowDescription[0], leftClick);
-    //     // const newPage = getByText(/Descricao do personagem/i);
-    //     // expect(newPage).toBeInTheDocument();
-    // });
 });

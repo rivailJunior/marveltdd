@@ -1,4 +1,3 @@
-import React from "react";
 import { render, cleanup, fireEvent } from "@testing-library/react";
 import renderer from "react-test-renderer";
 import { MarvelInputSearch } from "../components/marvelInputSearch";

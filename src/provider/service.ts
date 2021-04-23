@@ -8,7 +8,6 @@ export enum ParticipationTypes {
     comics = "comics",
 }
 
-
 const api = axios.create({
     baseURL: 'https://gateway.marvel.com/v1/public',
 });
@@ -17,8 +16,9 @@ const getService = async (url: string, options: object): Promise<AxiosResponse> 
     return await api.get(url, { params: { apikey, ...options } })
 }
 
-const getCharacters = async (total: number): Promise<CharacterDataContainer> => {
-    const result = await getService('/characters', { offset: 0, limit: total })
+const getCharacters = async (total: number, offset?: number): Promise<CharacterDataContainer> => {
+    const currentPage = offset ? offset : 0;
+    const result = await getService('/characters', { offset: currentPage, limit: total })
     return result.data?.data
 }
 

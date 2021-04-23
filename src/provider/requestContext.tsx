@@ -11,7 +11,10 @@ import {
 } from "./service";
 
 type RequestContextType = {
-    getCharacters(total: number): Promise<CharacterDataContainer>;
+    getCharacters(
+        total: number,
+        offset?: number
+    ): Promise<CharacterDataContainer>;
     getCharacter(id: number): Promise<[Character]>;
     getCharacterByName(name: string): Promise<[Character]>;
     getParticipation(id: number, type: string): Promise<any>;

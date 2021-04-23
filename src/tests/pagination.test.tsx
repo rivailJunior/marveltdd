@@ -39,6 +39,48 @@ describe("`<MarvelPagination>`", () => {
         );
         fireEvent.click(getByText(/5/i));
         expect(callback).toBeCalledTimes(1);
-        expect(callback).toBeCalledWith(5);
+        expect(callback).toBeCalledWith(4);
+    });
+
+    test("Set 1 when press first item", () => {
+        const callback = jest.fn();
+        const { getByText } = render(
+            <MarvelPagination total={1000} handleActive={callback} />
+        );
+        fireEvent.click(getByText(/First/i));
+        expect(callback).toBeCalledTimes(1);
+        expect(callback).toBeCalledWith(0);
+    });
+
+    test("Get previous page when click previous button", () => {
+        const callback = jest.fn();
+        const { getByText } = render(
+            <MarvelPagination total={1000} handleActive={callback} />
+        );
+        fireEvent.click(getByText(/5/i));
+        expect(callback).toBeCalledTimes(1);
+        expect(callback).toBeCalledWith(4);
+        fireEvent.click(getByText(/Previous/i));
+        expect(callback).toBeCalledWith(4);
+    });
+
+    test("Get last page when click last button", () => {
+        const callback = jest.fn();
+        const { getByText } = render(
+            <MarvelPagination total={1000} handleActive={callback} />
+        );
+        const totalValues = Array(Math.ceil(1000 / 10)).fill(0);
+        fireEvent.click(getByText(/Last/i));
+        expect(callback).toBeCalledWith(totalValues.length);
+    });
+
+    test("Get next page when click next", () => {
+        const callback = jest.fn();
+        const { getByText } = render(
+            <MarvelPagination total={1000} handleActive={callback} />
+        );
+        fireEvent.click(getByText(/5/i));
+        fireEvent.click(getByText(/Next/i));
+        expect(callback).toBeCalledWith(6);
     });
 });

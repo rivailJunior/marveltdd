@@ -1,14 +1,6 @@
 import React from "react";
-import {
-    render,
-    cleanup,
-    fireEvent,
-    getByTestId,
-    getAllByTestId,
-} from "@testing-library/react";
+import { render, cleanup } from "@testing-library/react";
 import renderer from "react-test-renderer";
-import { act } from "react-dom/test-utils";
-import { MemoryRouter } from "react-router-dom";
 import { CarouselInfor } from "../components/carousel";
 import { responseSeriesMock } from "../characterTypes/requestValueMock";
 

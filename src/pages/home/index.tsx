@@ -6,7 +6,6 @@ import { MarvelList } from "../../components/marvelList";
 import { MarvelPagination } from "../../components/marvelPagination";
 import styles from "./index.module.css";
 import { MarvelInputSearch } from "../../components/marvelInputSearch";
-import { ParticipationTypes } from "../../provider/service";
 
 function Index(): JSX.Element {
     const { getCharacters, getCharacterByName } = useRequestContext();
@@ -21,9 +20,9 @@ function Index(): JSX.Element {
         getList();
     }, []);
 
-    const getList = async () => {
+    const getList = async (offset?: number) => {
         try {
-            const response = await getCharacters(10);
+            const response = await getCharacters(10, offset);
             setList(response?.results);
             setPagination({ numberPages: response?.total, currentPage: 0 });
         } catch (err) {
@@ -42,6 +41,10 @@ function Index(): JSX.Element {
         } catch (err) {
             setErrInfo(true);
         }
+    };
+
+    const handleActive = (active: any) => {
+        getList(active);
     };
 
     return (
@@ -68,7 +71,10 @@ function Index(): JSX.Element {
                 </Container>
             </Jumbotron>
             <div className={styles.paginationDiv}>
-                <MarvelPagination total={pagination.numberPages} />
+                <MarvelPagination
+                    total={pagination.numberPages}
+                    handleActive={handleActive}
+                />
             </div>
         </div>
     );
