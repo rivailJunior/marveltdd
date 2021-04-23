@@ -3,7 +3,7 @@ import { Carousel } from "react-bootstrap";
 import styles from "./carousel.module.css";
 
 type iCarouselProps = {
-    data: [any];
+    data: [] | any;
     type: string;
 };
 export function CarouselInfor({ data, type }: iCarouselProps): JSX.Element {
@@ -13,35 +13,40 @@ export function CarouselInfor({ data, type }: iCarouselProps): JSX.Element {
         setIndex(selectedIndex);
     };
 
-    const showErr = !data.length ? styles.showCarousel : styles.hideCarousel;
-    const showCarousel = data.length
-        ? styles.showCarousel
-        : styles.hideCarousel;
     return (
         <>
-            <div className={showErr}>Ops. Nenhuma {type} encontrado</div>
-            <Carousel
-                className={showCarousel}
-                activeIndex={index}
-                onSelect={handleSelect}
-            >
-                {data.map((item, index) => {
-                    <Carousel.Item key={index}>
-                        <img
-                            className="d-block w-100"
-                            src="holder.js/800x400?text=First slide&bg=373940"
-                            alt="First slide"
-                        />
-                        <Carousel.Caption>
-                            <h3>First slide label</h3>
-                            <p>
-                                Nulla vitae elit libero, a pharetra augue mollis
-                                interdum.
-                            </p>
-                        </Carousel.Caption>
-                    </Carousel.Item>;
-                })}
-            </Carousel>
+            {!data.length ? (
+                <div>Ops. Nenhuma {type} encontrado</div>
+            ) : (
+                <>
+                    <div
+                        className="labelHeader"
+                        style={{ fontSize: 20, fontWeight: 500 }}
+                    >
+                        {type}
+                    </div>
+                    <Carousel activeIndex={index} onSelect={handleSelect}>
+                        {data.map((item: any, id: number) => {
+                            return (
+                                <Carousel.Item
+                                    key={id}
+                                    data-testid="carouselItem"
+                                >
+                                    <img
+                                        className="d-block w-100"
+                                        src={`${item?.thumbnail?.path}.${item?.thumbnail?.extension}`}
+                                        alt="First slide"
+                                    />
+                                    <Carousel.Caption>
+                                        <h3>{item?.title}</h3>
+                                        <p>{item?.endYear}</p>
+                                    </Carousel.Caption>
+                                </Carousel.Item>
+                            );
+                        })}
+                    </Carousel>
+                </>
+            )}
         </>
     );
 }

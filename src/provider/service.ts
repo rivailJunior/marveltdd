@@ -1,8 +1,13 @@
 import { Character, CharacterDataContainer } from './../characterTypes/characters';
 import axios, { AxiosResponse } from 'axios'
 const apikey = process.env.REACT_APP_PUBKEY
-// const hash = process.env.REACT_APP_HASH
-// const ts = 1;
+
+export enum ParticipationTypes {
+    series = "series",
+    events = "events",
+    comics = "comics",
+}
+
 
 const api = axios.create({
     baseURL: 'https://gateway.marvel.com/v1/public',
@@ -27,4 +32,9 @@ const getCharacter = async (id: number): Promise<Character> => {
     return result.data?.data?.results
 }
 
-export { getCharacters, getCharacter, getParticipation as getParticipations };
+const getCharacterByName = async (name: string): Promise<Character> => {
+    const result = await getService(`/characters?name=${name}`, {})
+    return result.data?.data?.results
+}
+
+export { getCharacters, getCharacter, getParticipation, getCharacterByName };

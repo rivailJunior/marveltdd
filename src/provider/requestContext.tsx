@@ -1,20 +1,33 @@
-import React, { createContext, useContext, useState, useMemo } from "react";
+import { createContext, useContext } from "react";
 import {
     Character,
     CharacterDataContainer,
 } from "../characterTypes/characters";
-import { getCharacters, getCharacter, getParticipations } from "./service";
+import {
+    getCharacters,
+    getCharacter,
+    getParticipation,
+    getCharacterByName,
+} from "./service";
 
 type RequestContextType = {
     getCharacters(total: number): Promise<CharacterDataContainer>;
     getCharacter(id: number): Promise<[Character]>;
-    getParticipation(id: number): Promise<any>;
+    getCharacterByName(name: string): Promise<[Character]>;
+    getParticipation(id: number, type: string): Promise<any>;
 };
 
-const RequestContext = createContext({});
+const RequestContext = createContext({
+    getCharacter,
+    getCharacters,
+    getParticipation,
+    getCharacterByName,
+});
 
 export const useRequestContext = () => {
-    const context = useContext(RequestContext) as RequestContextType;
+    const context = (useContext(
+        RequestContext
+    ) as unknown) as RequestContextType;
     return context;
 };
 
@@ -29,7 +42,12 @@ export const RequestProvider = (props: any) => {
     // } = useRequestContext();
     return (
         <RequestContext.Provider
-            value={{ getParticipations, getCharacter, getCharacters }}
+            value={{
+                getParticipation,
+                getCharacter,
+                getCharacters,
+                getCharacterByName,
+            }}
             {...props}
         />
     );

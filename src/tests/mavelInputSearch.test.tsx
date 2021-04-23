@@ -28,7 +28,7 @@ describe("`<MarvelInputSearch>`", () => {
         expect(clearButton).toHaveClass("showClear");
     });
 
-    test("Clear input when click at clear button and hide clear button", async () => {
+    test("Clear input when click at clear button and hide clear button", () => {
         const { getByTestId } = render(
             <MarvelInputSearch handleChangeName={() => {}} />
         );
@@ -58,7 +58,7 @@ describe("`<MarvelInputSearch>`", () => {
         });
         const searchBtn = getByTestId("btnSearch");
         fireEvent.click(searchBtn);
-        expect(getName).toBeCalledTimes(2);
+        expect(getName).toBeCalledTimes(1);
         expect(getName).toBeCalledWith("Capitao america");
     });
 });

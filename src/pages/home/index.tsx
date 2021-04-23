@@ -1,16 +1,17 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
 import { useRequestContext } from "../../provider/requestContext";
 import { Container, Jumbotron, Row, Col } from "react-bootstrap";
 import { Character } from "../../characterTypes/characters";
-import { CharacterValue } from "../../characterTypes/charactersValues";
 import { MarvelList } from "../../components/marvelList";
 import { MarvelPagination } from "../../components/marvelPagination";
 import styles from "./index.module.css";
 import { MarvelInputSearch } from "../../components/marvelInputSearch";
+import { ParticipationTypes } from "../../provider/service";
 
 function Index(): JSX.Element {
-    const { getCharacters, getCharacter } = useRequestContext();
-    const [list, setlist] = useState<[Character]>([CharacterValue]);
+    const { getCharacters, getCharacterByName } = useRequestContext();
+    const [list, setList] = useState<[Character]>([] as any);
+    const [errInfo, setErrInfo] = useState(false);
     const [pagination, setPagination] = useState({
         numberPages: 0,
         currentPage: 0,
@@ -20,33 +21,28 @@ function Index(): JSX.Element {
         getList();
     }, []);
 
-    const getList = useCallback(async () => {
+    const getList = async () => {
         try {
             const response = await getCharacters(10);
-            setlist(response?.results);
+            setList(response?.results);
             setPagination({ numberPages: response?.total, currentPage: 0 });
         } catch (err) {
-            // console.log("err", err);
+            setErrInfo(true);
         }
-    }, [getCharacters]);
+    };
 
-    const getCharacterByName = useCallback(
-        async (name: string) => {
-            try {
-                if (name.length) {
-                    const response: [Character] = await getCharacter(
-                        parseInt(name)
-                    );
-                    setlist(response);
-                } else {
-                    getList();
-                }
-            } catch (err) {
-                console.log("err getCharacterByName", err);
+    const getByName = async (name: string) => {
+        try {
+            if (name.length > 0) {
+                const response: [Character] = await getCharacterByName(name);
+                setList(response);
+            } else {
+                getList();
             }
-        },
-        [getCharacter]
-    );
+        } catch (err) {
+            setErrInfo(true);
+        }
+    };
 
     return (
         <div>
@@ -59,13 +55,13 @@ function Index(): JSX.Element {
                         <Row>
                             <Col md={3}>
                                 <MarvelInputSearch
-                                    handleChangeName={getCharacterByName}
+                                    handleChangeName={getByName}
                                 />
                             </Col>
                         </Row>
                         <Row>
                             <Col md={12} xs={12}>
-                                <MarvelList data={list} />
+                                <MarvelList data={list} errInfor={errInfo} />
                             </Col>
                         </Row>
                     </>

@@ -3,14 +3,18 @@
 exports[`\`<CarouselInfor>\` Render correctly 1`] = `
 Array [
   <div
-    className="hideCarousel"
+    className="labelHeader"
+    style={
+      Object {
+        "fontSize": 20,
+        "fontWeight": 500,
+      }
+    }
   >
-    Ops. Nenhuma 
     Series
-     encontrado
   </div>,
   <div
-    className="showCarousel carousel slide"
+    className="carousel slide"
     onKeyDown={[Function]}
     onMouseOut={[Function]}
     onMouseOver={[Function]}
@@ -20,10 +24,70 @@ Array [
   >
     <ol
       className="carousel-indicators"
-    />
+    >
+      <li
+        className="active"
+        onClick={[Function]}
+      />
+      <li
+        onClick={[Function]}
+      />
+      <li
+        onClick={[Function]}
+      />
+    </ol>
     <div
       className="carousel-inner"
-    />
+    >
+      <div
+        className="active carousel-item"
+        data-testid="carouselItem"
+      >
+        <img
+          alt="First slide"
+          className="d-block w-100"
+          src="undefined.undefined"
+        />
+        <div
+          className="carousel-caption"
+        >
+          <h3 />
+          <p />
+        </div>
+      </div>
+      <div
+        className="carousel-item"
+        data-testid="carouselItem"
+      >
+        <img
+          alt="First slide"
+          className="d-block w-100"
+          src="undefined.undefined"
+        />
+        <div
+          className="carousel-caption"
+        >
+          <h3 />
+          <p />
+        </div>
+      </div>
+      <div
+        className="carousel-item"
+        data-testid="carouselItem"
+      >
+        <img
+          alt="First slide"
+          className="d-block w-100"
+          src="undefined.undefined"
+        />
+        <div
+          className="carousel-caption"
+        >
+          <h3 />
+          <p />
+        </div>
+      </div>
+    </div>
     <a
       className="carousel-control-prev"
       href="#"

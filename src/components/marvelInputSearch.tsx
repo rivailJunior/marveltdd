@@ -8,8 +8,15 @@ type iInputProps = {
 const MarvelInputSearch = ({ handleChangeName }: iInputProps) => {
     const [name, setName] = useState("");
     useEffect(() => {
-        handleChangeName(name);
-    }, [name, handleChangeName]);
+        if (name.length > 1) {
+            handleChangeName(name);
+        }
+    }, [name]);
+
+    const handleClear = () => {
+        setName("");
+        handleChangeName("");
+    };
     const showOrHideClear =
         name.length > 0 ? styles.showClear : styles.hideClear;
     return (
@@ -27,7 +34,7 @@ const MarvelInputSearch = ({ handleChangeName }: iInputProps) => {
             <InputGroup.Append
                 className={showOrHideClear}
                 data-testid="btnClear"
-                onClick={() => setName("")}
+                onClick={handleClear}
             >
                 <InputGroup.Text>X</InputGroup.Text>
             </InputGroup.Append>

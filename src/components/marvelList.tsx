@@ -6,19 +6,18 @@ import { useHistory } from "react-router-dom";
 
 type iProps = {
     data: [Character];
+    errInfor: boolean;
 };
 
-export const MarvelList = ({ data }: iProps): JSX.Element => {
+export const MarvelList = ({ data, errInfor }: iProps): JSX.Element => {
     let history = useHistory();
 
     const changePage = (item: Character | any) => {
         history.push("/description", item);
     };
-
-    const showOrHideList = data.length > 0 ? styles.showList : styles.hideList;
-    const showOrHideInformation = !data.length
-        ? styles.showList
-        : styles.hideList;
+    // console.log("data", data.length);
+    const showOrHideList = !errInfor ? styles.showList : styles.hideList;
+    const showOrHideInformation = errInfor ? styles.showList : styles.hideList;
     return (
         <>
             <div className={"labelHeader " + showOrHideInformation}>

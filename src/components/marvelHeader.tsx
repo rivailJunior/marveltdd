@@ -30,7 +30,7 @@ const MarvelHeader = ({
             bg="light"
             className={styles.marvelHeader}
         >
-            <Navbar.Brand href="#home">
+            <Navbar.Brand href="/">
                 {!leftLabel?.length ? NoPropsDivInfor() : leftLabel}
             </Navbar.Brand>
             <Navbar.Toggle />

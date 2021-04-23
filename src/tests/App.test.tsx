@@ -1,37 +1,58 @@
 import React from "react";
 import {
-    render,
     cleanup,
-    // fireEvent,
+    fireEvent,
+    screen,
+    render,
     act,
-    // screen,
 } from "@testing-library/react";
 import renderer from "react-test-renderer";
 import App from "../pages/home";
 import { RequestProvider } from "../provider/requestContext";
-import { getCharacters } from "../provider/service";
-
-afterEach(cleanup);
-// beforeEach(cleanup);
+import {
+    getCharacter,
+    getCharacters,
+    getParticipation,
+} from "../provider/service";
+// afterEach(cleanup);
 
 describe("`<App>`", () => {
     test("Render correctly", () => {
-        const container = renderer.create(<App />);
+        const container = renderer.create(
+            <RequestProvider>
+                <App />
+            </RequestProvider>
+        );
         container.toJSON();
         expect(container).toMatchSnapshot();
     });
 
-    test("Show information before loading list and after that show 10", async () => {
-        const promise = getCharacters(10);
-        const { getByText, findAllByTestId } = render(
-            <RequestProvider values={{ getCharacters: promise }}>
+    test("Render all components correctly", async () => {
+        const promise = Promise.resolve(() => setTimeout(() => {}, 1000));
+        render(
+            <RequestProvider>
                 <App />
             </RequestProvider>
         );
-        expect(getByText(/nenhum personagem encontrado/i)).toBeInTheDocument();
-
-        await act(() => promise);
-        // const listLi = await findAllByTestId("marvelLi");
-        // expect(listLi).toHaveLength(10); // sometimes its return only one
+        expect(
+            screen.getByText(/Nenhum personagem encontrado/i)
+        ).toBeInTheDocument();
+        expect(screen.getByText(/Busca de personagens/i)).toBeInTheDocument();
+        const btnSearch = screen.getByTestId("btnSearch");
+        const inputSearch = screen.getByTestId("inputSearch");
+        expect(btnSearch).toBeInTheDocument();
+        expect(inputSearch).toBeInTheDocument();
+        // await act(async () => {
+        //     fireEvent.change(inputSearch, {
+        //         target: {
+        //             value: 1011334,
+        //         },
+        //     });
+        //     fireEvent.click(btnSearch);
+        //     await promise;
+        // });
+        // await expect(inputSearch.value).toBe("1011334");
+        // const marvelLi = await screen.findAllByTestId("marvelLi");
+        // expect(marvelLi).toHaveLength(1);
     });
 });

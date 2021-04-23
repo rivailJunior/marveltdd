@@ -6,7 +6,7 @@ exports[`\`<MarvelHeader>\` Render correctly 1`] = `
 >
   <a
     className="navbar-brand"
-    href="#home"
+    href="/"
   >
     Objective
   </a>

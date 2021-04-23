@@ -1,8 +1,9 @@
 import React from "react";
-import { render, cleanup } from "@testing-library/react";
+import { render, cleanup, screen } from "@testing-library/react";
 import renderer from "react-test-renderer";
 import { getCharacter } from "../provider/service";
 import { ListInformationItem } from "../components/listInformationItem";
+import { responseValueMock } from "../characterTypes/requestValueMock";
 
 afterEach(cleanup);
 
@@ -31,10 +32,9 @@ describe("`<ParticipationListItem>`", () => {
     });
 
     test("Render max 3 itens on list", async () => {
-        const response = await getCharacter(1009148);
-        const { findAllByTestId } = render(
+        const { findAllByTestId, debug } = render(
             <ListInformationItem
-                list={response[0]?.events?.items}
+                list={responseValueMock.data.results[0].events?.items}
                 tagName="name"
                 information="Eventos"
             />

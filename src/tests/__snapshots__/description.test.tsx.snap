@@ -1,0 +1,118 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`\`<Description>\` Render correctly 1`] = `
+<div
+  className="jumbotron"
+>
+  <div
+    className="container"
+  >
+    <h1
+      className="labelHeader"
+      data-testid="labelheader"
+    >
+      Descricao do personagem
+    </h1>
+    <div
+      className="row"
+    >
+      <div
+        className="col-md-6 col-12"
+      >
+        <div>
+          <img
+            alt=""
+            className="picture"
+            src="http://i.annihil.us/u/prod/marvel/i/mg/c/e0/535fecbbb9784.jpg"
+          />
+        </div>
+      </div>
+      <div
+        className="col-md-6 col-12"
+      >
+        <div
+          className="card"
+        >
+          <div
+            className="card-body"
+          >
+            <div
+              className="labelHeader card-title h5"
+            >
+              3-D Man
+            </div>
+            <div
+              className="mb-2 labelHeader text-muted card-subtitle h6"
+            >
+              
+            </div>
+            <div
+              className="mt-2 labelHeader text-muted card-subtitle h6"
+            >
+              Aparições:
+            </div>
+            <div
+              className="labelHeader "
+              style={
+                Object {
+                  "fontSize": 15,
+                  "fontWeight": 500,
+                }
+              }
+            >
+              <ul>
+                <li>
+                  Quadrinhos:
+                   
+                  12
+                </li>
+                <li>
+                  Eventos:
+                   
+                  1
+                </li>
+                <li>
+                  Séries:
+                   
+                  3
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="pt-3 row"
+    >
+      <div
+        className="col-md-4"
+      >
+        <div>
+          Ops. Nenhuma 
+          series
+           encontrado
+        </div>
+      </div>
+      <div
+        className="col-md-4"
+      >
+        <div>
+          Ops. Nenhuma 
+          comics
+           encontrado
+        </div>
+      </div>
+      <div
+        className="col-md-4"
+      >
+        <div>
+          Ops. Nenhuma 
+          events
+           encontrado
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
