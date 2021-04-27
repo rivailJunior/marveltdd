@@ -35,14 +35,6 @@ export const useRequestContext = () => {
 };
 
 export const RequestProvider = (props: any) => {
-    // const getRequest = useMemo(() => {
-    //     return { getCharacters, getCharacter };
-    // }, []);
-    // const {
-    //     getParticipation,
-    //     getCharacter,
-    //     getCharacters,
-    // } = useRequestContext();
     return (
         <RequestContext.Provider
             value={{

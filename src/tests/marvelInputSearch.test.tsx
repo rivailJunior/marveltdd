@@ -1,13 +1,13 @@
 import { render, cleanup, fireEvent } from "@testing-library/react";
 import renderer from "react-test-renderer";
-import { MarvelInputSearch } from "../components/marvelInputSearch";
+import { MarvelInputSearch } from "../components/input/marvelInputSearch";
 
 afterEach(cleanup);
 
 describe("`<MarvelInputSearch>`", () => {
     test("Render correctly", () => {
         const container = renderer.create(
-            <MarvelInputSearch handleChangeName={() => {}} />
+            <MarvelInputSearch handleChangeName={() => { }} />
         );
         container.toJSON();
         expect(container).toMatchSnapshot();
@@ -15,7 +15,7 @@ describe("`<MarvelInputSearch>`", () => {
 
     test("Show clear button when type", async () => {
         const { getByTestId } = render(
-            <MarvelInputSearch handleChangeName={() => {}} />
+            <MarvelInputSearch handleChangeName={() => { }} />
         );
         const input = getByTestId("inputSearch");
         fireEvent.change(input, {
@@ -29,7 +29,7 @@ describe("`<MarvelInputSearch>`", () => {
 
     test("Clear input when click at clear button and hide clear button", () => {
         const { getByTestId } = render(
-            <MarvelInputSearch handleChangeName={() => {}} />
+            <MarvelInputSearch handleChangeName={() => { }} />
         );
         const input = getByTestId("inputSearch");
         fireEvent.change(input, {

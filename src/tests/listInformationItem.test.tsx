@@ -1,7 +1,7 @@
 import React from "react";
 import { render, cleanup } from "@testing-library/react";
 import renderer from "react-test-renderer";
-import { ListInformationItem } from "../components/listInformationItem";
+import { ListInformationItem } from "../components/list/listInformationItem";
 import { responseValueMock } from "../characterTypes/requestValueMock";
 
 afterEach(cleanup);

@@ -1,7 +1,7 @@
 import React from "react";
 import { render, cleanup, fireEvent } from "@testing-library/react";
 import renderer from "react-test-renderer";
-import { MarvelPagination } from "../components/marvelPagination";
+import { MarvelPagination } from "../components/pagination/marvelPagination";
 
 afterEach(cleanup);
 
@@ -26,7 +26,7 @@ describe("`<MarvelPagination>`", () => {
 
     test("Render with first item as active", () => {
         const { getAllByTestId } = render(
-            <MarvelPagination total={1000} handleActive={() => {}} />
+            <MarvelPagination total={1000} handleActive={() => { }} />
         );
         const paginationItem = getAllByTestId("paginationItems");
         expect(paginationItem[0].parentNode).toHaveClass("active");

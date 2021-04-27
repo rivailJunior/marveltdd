@@ -1,4 +1,4 @@
-import { Character } from "../characterTypes/characters";
+import { Character } from "../../characterTypes/characters";
 import { ListGroup, Col, Row, Image } from "react-bootstrap";
 import styles from "./marvelList.module.css";
 import { ListInformationItem } from "./listInformationItem";
@@ -15,7 +15,7 @@ export const MarvelList = ({ data, errInfor }: iProps): JSX.Element => {
     const changePage = (item: Character | any) => {
         history.push("/description", item);
     };
-    // console.log("data", data.length);
+
     const showOrHideList = !errInfor ? styles.showList : styles.hideList;
     const showOrHideInformation = errInfor ? styles.showList : styles.hideList;
     return (
@@ -55,7 +55,7 @@ export const MarvelList = ({ data, errInfor }: iProps): JSX.Element => {
                                         <Image
                                             className={styles.thumbImg}
                                             rounded
-                                            src={`${character?.thumbnail?.path}.${character?.thumbnail?.extension}`}
+                                            src={`${ character?.thumbnail?.path }.${ character?.thumbnail?.extension }`}
                                             alt=""
                                         />
                                     </div>

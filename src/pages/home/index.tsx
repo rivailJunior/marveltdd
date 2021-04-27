@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import { useRequestContext } from "../../provider/requestContext";
 import { Container, Jumbotron, Row, Col } from "react-bootstrap";
 import { Character } from "../../characterTypes/characters";
-import { MarvelList } from "../../components/marvelList";
-import { MarvelPagination } from "../../components/marvelPagination";
+import { MarvelList } from "../../components/list/marvelList";
+import { MarvelPagination } from "../../components/pagination/marvelPagination";
 import styles from "./index.module.css";
-import { MarvelInputSearch } from "../../components/marvelInputSearch";
+import { MarvelInputSearch } from "../../components/input/marvelInputSearch";
 
 function Index(): JSX.Element {
     const { getCharacters, getCharacterByName } = useRequestContext();

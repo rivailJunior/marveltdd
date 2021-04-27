@@ -6,11 +6,10 @@ import {
     Col,
     Image,
     Card,
-    Carousel,
 } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
 import { Character } from "../../characterTypes/characters";
-import { CarouselInfor } from "../../components/carousel";
+import { CarouselInfor } from "../../components/carousel/carousel";
 import { getParticipation } from "../../provider/service";
 import styles from "./description.module.css";
 
@@ -29,7 +28,6 @@ const Description = (): JSX.Element => {
                 getParticipation(character.id, "events"),
                 getParticipation(character.id, "comics"),
             ]).then((response) => {
-                console.log("response", response);
                 setSeries(response[0]?.results);
                 setEvents(response[1]?.results);
                 setComics(response[2]?.results);
@@ -55,7 +53,7 @@ const Description = (): JSX.Element => {
                             <Col md={6} xs={12}>
                                 <div>
                                     <Image
-                                        src={`${character?.thumbnail?.path}.${character?.thumbnail?.extension}`}
+                                        src={`${ character?.thumbnail?.path }.${ character?.thumbnail?.extension }`}
                                         alt=""
                                         className={styles.picture}
                                     />

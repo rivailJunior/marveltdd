@@ -2,7 +2,7 @@ import React from "react";
 import { render, cleanup, fireEvent, screen } from "@testing-library/react";
 import renderer from "react-test-renderer";
 import { getCharacters } from "../provider/service";
-import { MarvelList } from "../components/marvelList";
+import { MarvelList } from "../components/list/marvelList";
 import { CharacterValue } from "../characterTypes/charactersValues";
 import { act } from "react-dom/test-utils";
 import { MemoryRouter, Router, BrowserRouter } from "react-router-dom";

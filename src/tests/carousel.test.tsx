@@ -1,8 +1,8 @@
 import React from "react";
 import { render, cleanup } from "@testing-library/react";
 import renderer from "react-test-renderer";
-import { CarouselInfor } from "../components/carousel";
 import { responseSeriesMock } from "../characterTypes/requestValueMock";
+import { CarouselInfor } from "../components/carousel/carousel";
 
 afterEach(cleanup);
 

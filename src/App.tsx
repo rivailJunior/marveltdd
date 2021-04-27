@@ -4,7 +4,7 @@ import Home from "./pages/home";
 import Description from "./pages/description";
 import { RequestProvider } from "./provider/requestContext";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { MarvelHeader } from "./components/marvelHeader";
+import { MarvelHeader } from "./components/header/marvelHeader";
 
 function App(): JSX.Element {
     return (

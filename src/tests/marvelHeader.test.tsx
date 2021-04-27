@@ -1,7 +1,7 @@
 import React from "react";
 import { render, cleanup } from "@testing-library/react";
 import renderer from "react-test-renderer";
-import { MarvelHeader } from "../components/marvelHeader";
+import { MarvelHeader } from "../components/header/marvelHeader";
 
 afterEach(cleanup);
 
