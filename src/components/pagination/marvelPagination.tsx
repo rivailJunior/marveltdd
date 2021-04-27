@@ -10,57 +10,86 @@ const MarvelPagination = ({
     total,
     handleActive,
 }: iPaginationProps): JSX.Element => {
-    const [active, setactive] = useState(1);
+    const [active, setActive] = useState(0);
+    const [maxAndMin, setMaxAndMin] = useState({ max: 9, min: 0 })
     const totalValues = Array(Math.ceil(total / 10)).fill(0);
     const isToHidePagination =
         total > 10 ? styles.showPagination : styles.noPagination;
 
+    const setPaginationOffset = (current: number) => {
+        if (current >= 9) {
+            setMaxAndMin({ max: current + 1, min: current - 9 })
+        } else {
+            setMaxAndMin({ max: 9, min: 0 })
+        }
+    }
+
     return (
         <Pagination className={isToHidePagination} data-testid="paginationDiv">
-            <Pagination.First
-                onClick={() => {
-                    setactive(1);
-                    handleActive(0);
-                }}
-            />
-            <Pagination.Prev
-                onClick={() => {
-                    const current = active === 1 ? 0 : active - 1;
-                    setactive(current === 0 ? 1 : current);
-                    handleActive(current);
-                }}
-            />
+            {active > 0 && active > 1 && (
+                <Pagination.First
+                    className={styles.paginationItem}
+                    onClick={() => {
+                        setActive(0);
+                        handleActive(0);
+                        setPaginationOffset(0)
+                    }}
+                />
+            )}
+            {active > 0 && (
+                <Pagination.Prev
+                    className={styles.paginationItem}
+
+                    onClick={() => {
+                        const current = active === 1 ? 0 : active - 1;
+                        setActive(current);
+                        handleActive(current);
+                        setPaginationOffset(current)
+                    }}
+                />
+            )}
+
             {totalValues.map((item, index) => {
-                return (
-                    index < 10 && (
-                        <Pagination.Item
-                            data-testid="paginationItems"
-                            key={index + 1}
-                            active={index + 1 === active}
-                            onClick={() => {
-                                setactive(index + 1);
-                                handleActive(index);
-                            }}
-                        >
-                            {index + 1}
-                        </Pagination.Item>
-                    )
+                return index >= maxAndMin.min && index <= maxAndMin.max && (
+                    <Pagination.Item
+                        data-testid="paginationItems"
+                        key={index}
+                        active={index === active}
+                        className={index === active ? ` ${ styles.paginationItem } ${ styles.active } ${ styles.paginate } paginationActive` : `${ styles.paginationItem } ${ styles.paginate }`}
+                        onClick={() => {
+                            setActive(index);
+                            handleActive(index);
+                            setPaginationOffset(index)
+                        }}
+                    >
+                        {index + 1}
+                    </Pagination.Item>
+
                 );
             })}
-            <Pagination.Next
-                onClick={() => {
-                    const current =
-                        active === totalValues.length ? active : active + 1;
-                    setactive(current);
-                    handleActive(current);
-                }}
-            />
-            <Pagination.Last
-                onClick={() => {
-                    setactive(totalValues.length);
-                    handleActive(totalValues.length);
-                }}
-            />
+            {active !== totalValues.length - 1 && (
+                <Pagination.Next
+                    className={styles.paginationItem}
+                    onClick={() => {
+                        const current =
+                            active === totalValues.length ? active : active + 1;
+                        setActive(current);
+                        handleActive(current);
+                        setPaginationOffset(current)
+                    }}
+                />
+            )}
+
+            {active > 0 && active !== totalValues.length - 1 && (
+                <Pagination.Last
+                    className={styles.paginationItem}
+                    onClick={() => {
+                        setActive(totalValues.length - 1);
+                        handleActive(totalValues.length - 1);
+                        setPaginationOffset(totalValues.length - 1)
+                    }}
+                />
+            )}
         </Pagination>
     );
 };

@@ -125,51 +125,7 @@ exports[`\`<App>\` Render correctly 1`] = `
       data-testid="paginationDiv"
     >
       <li
-        className="page-item"
-      >
-        <a
-          className="page-link"
-          href="#"
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          role="button"
-        >
-          <span
-            aria-hidden="true"
-          >
-            «
-          </span>
-          <span
-            className="sr-only"
-          >
-            First
-          </span>
-        </a>
-      </li>
-      <li
-        className="page-item"
-      >
-        <a
-          className="page-link"
-          href="#"
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          role="button"
-        >
-          <span
-            aria-hidden="true"
-          >
-            ‹
-          </span>
-          <span
-            className="sr-only"
-          >
-            Previous
-          </span>
-        </a>
-      </li>
-      <li
-        className="page-item"
+        className="paginationItem page-item"
       >
         <a
           className="page-link"
@@ -187,28 +143,6 @@ exports[`\`<App>\` Render correctly 1`] = `
             className="sr-only"
           >
             Next
-          </span>
-        </a>
-      </li>
-      <li
-        className="page-item"
-      >
-        <a
-          className="page-link"
-          href="#"
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          role="button"
-        >
-          <span
-            aria-hidden="true"
-          >
-            »
-          </span>
-          <span
-            className="sr-only"
-          >
-            Last
           </span>
         </a>
       </li>

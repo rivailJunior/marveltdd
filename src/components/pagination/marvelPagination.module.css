@@ -1,7 +1,36 @@
 .noPagination {
-    display: none !important;
+	display: none !important;
 }
 
 .showPagination {
-    display: flex;
+	display: flex;
+}
+
+.paginationItem {
+	margin-left: 5px;
+	margin-right: 5px;
+	border-radius: 5px !important;
+	cursor: pointer;
+}
+.paginationItem > a {
+	border-radius: 5px;
+	height: 32px;
+	color: #555555;
+	font-size: 14px;
+}
+
+.paginationItem > a:hover {
+	background-color: #64b0e2 !important;
+	border-color: #64b0e2 !important;
+	color: white;
+	opacity: 1;
+}
+
+.active > span {
+	color: #fff;
+	background-color: #167abc !important;
+	border-color: #167abc !important;
+	border-radius: 5px;
+	height: 32px;
+	font-size: 14px;
 }
