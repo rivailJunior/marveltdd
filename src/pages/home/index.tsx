@@ -23,7 +23,7 @@ function Index(): JSX.Element {
     const getList = async (offset?: number) => {
         try {
             const response = await getCharacters(10, offset);
-            setList(response?.results);
+            setList(response.results);
             setPagination({ numberPages: response?.total, currentPage: 0 });
         } catch (err) {
             setErrInfo(true);
@@ -34,10 +34,10 @@ function Index(): JSX.Element {
         try {
             if (name.length > 0) {
                 const response: [Character] = await getCharacterByName(name);
-                setList(response);
-            } else {
-                getList();
+                return response.length && setList(response);
             }
+            getList()
+
         } catch (err) {
             setErrInfo(true);
         }

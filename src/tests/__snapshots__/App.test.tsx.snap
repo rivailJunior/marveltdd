@@ -20,37 +20,29 @@ exports[`\`<App>\` Render correctly 1`] = `
         <div
           className="col-md-3"
         >
-          <div
-            className="mb-3 input-group"
-          >
-            <input
-              aria-label="Busque personagens"
-              className="form-control"
-              data-testid="inputSearch"
-              onChange={[Function]}
-              placeholder="Search"
-              value=""
-            />
-            <div
-              className="input-group-append"
-              data-testid="btnSearch"
+          <div>
+            <label
+              className="labelSearch"
+              htmlFor=""
             >
-              <span
-                className="input-group-text"
-              >
-                OK
-              </span>
-            </div>
+              Nome do personagem
+            </label>
             <div
-              className="hideClear input-group-append"
-              data-testid="btnClear"
-              onClick={[Function]}
+              className="mb-3 inputGroup input-group"
             >
-              <span
-                className="input-group-text"
-              >
-                X
-              </span>
+              <input
+                aria-label="Busque personagens"
+                className="inputSearch form-control"
+                data-testid="inputSearch"
+                onChange={[Function]}
+                placeholder="Search"
+                value=""
+              />
+              <img
+                alt=""
+                className="icon"
+                src="/mar.png"
+              />
             </div>
           </div>
         </div>
