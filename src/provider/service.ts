@@ -17,23 +17,23 @@ const getService = async (url: string, options: object): Promise<AxiosResponse> 
 }
 
 const getCharacters = async (total: number, offset?: number): Promise<CharacterDataContainer> => {
-    const currentPage = offset ? offset : 0;
+    const currentPage = offset || 0;
     const result = await getService('/characters', { offset: currentPage, limit: total })
     return result.data?.data
 }
 
 const getParticipation = async (id: number, type: string): Promise<any> => {
-    const result = await getService(`/characters/${id}/${type}`, {})
+    const result = await getService(`/characters/${ id }/${ type }`, {})
     return result.data?.data
 }
 
 const getCharacter = async (id: number): Promise<Character> => {
-    const result = await getService(`/characters/${id}`, {})
+    const result = await getService(`/characters/${ id }`, {})
     return result.data?.data?.results
 }
 
 const getCharacterByName = async (name: string): Promise<Character> => {
-    const result = await getService(`/characters?name=${name}`, {})
+    const result = await getService(`/characters?nameStartsWith=${ name }`, {})
     return result.data?.data?.results
 }
 
