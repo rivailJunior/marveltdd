@@ -14,7 +14,7 @@ export const ListInformationItem = ({
         <ul className={styles.list}>
             {list.slice(0, 3).map((item: any, index: number) => {
                 return (
-                    <li data-testid="informationLi" key={index}>
+                    <li className={styles.informationItem} data-testid="informationLi" key={index}>
                         {item[tagName]}
                     </li>
                 );

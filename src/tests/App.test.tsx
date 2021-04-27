@@ -1,20 +1,32 @@
-import React from "react";
+
 import {
-    cleanup,
-    fireEvent,
     screen,
     render,
-    act,
+    fireEvent
 } from "@testing-library/react";
 import renderer from "react-test-renderer";
 import App from "../pages/home";
 import { RequestProvider } from "../provider/requestContext";
-import {
-    getCharacter,
-    getCharacters,
-    getParticipation,
-} from "../provider/service";
-// afterEach(cleanup);
+import { unmountComponentAtNode } from "react-dom";
+
+let container: any = null;
+beforeEach(() => {
+    container = document.createElement("div");
+    document.body.appendChild(container);
+});
+
+afterEach(() => {
+    unmountComponentAtNode(container);
+    container.remove();
+    container = null;
+});
+
+beforeAll(() => {
+    jest.mock("../provider/requestContext", () => ({
+        __esModule: true,
+        default: jest.fn()
+    }));
+})
 
 describe("`<App>`", () => {
     test("Render correctly", () => {
@@ -27,32 +39,25 @@ describe("`<App>`", () => {
         expect(container).toMatchSnapshot();
     });
 
-    test("Render all components correctly", async () => {
-        const promise = Promise.resolve(() => setTimeout(() => {}, 1000));
-        render(
-            <RequestProvider>
-                <App />
-            </RequestProvider>
-        );
-        expect(
-            screen.getByText(/Nenhum personagem encontrado/i)
-        ).toBeInTheDocument();
+    test("Render all components correctly", () => {
+
+        render(<RequestProvider>
+            <App />
+        </RequestProvider>, container)
+
         expect(screen.getByText(/Busca de personagens/i)).toBeInTheDocument();
-        const btnSearch = screen.getByTestId("btnSearch");
         const inputSearch = screen.getByTestId("inputSearch");
-        expect(btnSearch).toBeInTheDocument();
         expect(inputSearch).toBeInTheDocument();
-        // await act(async () => {
-        //     fireEvent.change(inputSearch, {
-        //         target: {
-        //             value: 1011334,
-        //         },
-        //     });
-        //     fireEvent.click(btnSearch);
-        //     await promise;
-        // });
-        // await expect(inputSearch.value).toBe("1011334");
-        // const marvelLi = await screen.findAllByTestId("marvelLi");
-        // expect(marvelLi).toHaveLength(1);
+
+
+        fireEvent.change(inputSearch, {
+            target: {
+                value: 'Capitao america'
+            }
+        })
+
+        expect(screen.queryByText(/Nenhum personagem encontrado/)).toBeInTheDocument()
+
+        expect(inputSearch.value).toBe("Capitao america");
     });
 });

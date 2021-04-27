@@ -7,38 +7,32 @@ type iInputProps = {
 };
 const MarvelInputSearch = ({ handleChangeName }: iInputProps) => {
     const [name, setName] = useState("");
-    useEffect(() => {
-        if (name.length > 1) {
-            handleChangeName(name);
-        }
-    }, [name]);
 
-    const handleClear = () => {
-        setName("");
-        handleChangeName("");
-    };
-    const showOrHideClear =
-        name.length > 0 ? styles.showClear : styles.hideClear;
+    const onHandleChange = (evt: any) => {
+        setName(evt.target.value);
+        handleChangeName(evt.target.value)
+    }
     return (
-        <InputGroup className="mb-3">
-            <FormControl
-                value={name}
-                onChange={(evt) => setName(evt.target.value)}
-                data-testid="inputSearch"
-                placeholder="Search"
-                aria-label="Busque personagens"
-            />
-            <InputGroup.Append data-testid="btnSearch">
-                <InputGroup.Text>OK</InputGroup.Text>
-            </InputGroup.Append>
-            <InputGroup.Append
-                className={showOrHideClear}
-                data-testid="btnClear"
-                onClick={handleClear}
-            >
-                <InputGroup.Text>X</InputGroup.Text>
-            </InputGroup.Append>
-        </InputGroup>
+        <div>
+            <label htmlFor="" className={styles.labelSearch}>Nome do personagem</label>
+            <InputGroup className={"mb-3 " + styles.inputGroup}>
+
+                <FormControl
+                    value={name}
+                    onChange={onHandleChange}
+                    data-testid="inputSearch"
+                    placeholder="Search"
+                    aria-label="Busque personagens"
+                    className={styles.inputSearch}
+                />
+
+                <img src="/mar.png" alt="" className={styles.icon} />
+
+            </InputGroup>
+        </div>
+
+
+
     );
 };
 

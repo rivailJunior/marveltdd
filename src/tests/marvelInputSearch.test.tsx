@@ -13,7 +13,7 @@ describe("`<MarvelInputSearch>`", () => {
         expect(container).toMatchSnapshot();
     });
 
-    test("Show clear button when type", async () => {
+    test("Show if input value is correct", async () => {
         const { getByTestId } = render(
             <MarvelInputSearch handleChangeName={() => { }} />
         );
@@ -23,13 +23,13 @@ describe("`<MarvelInputSearch>`", () => {
                 value: "Capitao america",
             },
         });
-        const clearButton = getByTestId("btnClear");
-        expect(clearButton).toHaveClass("showClear");
+        expect(input).toHaveValue("Capitao america");
     });
 
     test("Clear input when click at clear button and hide clear button", () => {
+        const fn = jest.fn();
         const { getByTestId } = render(
-            <MarvelInputSearch handleChangeName={() => { }} />
+            <MarvelInputSearch handleChangeName={fn} />
         );
         const input = getByTestId("inputSearch");
         fireEvent.change(input, {
@@ -37,27 +37,8 @@ describe("`<MarvelInputSearch>`", () => {
                 value: "Capitao america",
             },
         });
-        const clearButton = getByTestId("btnClear");
-        expect(clearButton).toHaveClass("showClear");
-        fireEvent.click(clearButton);
-        expect(input.value).toBe("");
-        expect(clearButton).toHaveClass("hideClear");
-    });
 
-    test("Fire callback to get current input name typed", () => {
-        const getName = jest.fn();
-        const { getByTestId } = render(
-            <MarvelInputSearch handleChangeName={getName} />
-        );
-        const input = getByTestId("inputSearch");
-        fireEvent.change(input, {
-            target: {
-                value: "Capitao america",
-            },
-        });
-        const searchBtn = getByTestId("btnSearch");
-        fireEvent.click(searchBtn);
-        expect(getName).toBeCalledTimes(1);
-        expect(getName).toBeCalledWith("Capitao america");
+        expect(fn).toBeCalledTimes(1);
+        expect(fn).toBeCalledWith("Capitao america");
     });
 });
