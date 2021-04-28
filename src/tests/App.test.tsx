@@ -9,6 +9,14 @@ import App from "../pages/home";
 import { RequestProvider } from "../provider/requestContext";
 import { unmountComponentAtNode } from "react-dom";
 
+import { Router, Route } from "react-router-dom";
+import { createMemoryHistory } from "history";
+
+const renderWithRouter = (history: any, component: any) => {
+    return <Router history={history}>{component}</Router>;
+};
+
+
 let container: any = null;
 beforeEach(() => {
     container = document.createElement("div");
@@ -30,20 +38,17 @@ beforeAll(() => {
 
 describe("`<App>`", () => {
     test("Render correctly", () => {
-        const container = renderer.create(
-            <RequestProvider>
-                <App />
-            </RequestProvider>
-        );
+        const history = createMemoryHistory();
+        history.push("/1");
+        const container = renderer.create(renderWithRouter(history, <RequestProvider><App /></RequestProvider>));
         container.toJSON();
         expect(container).toMatchSnapshot();
     });
 
     test("Render all components correctly", () => {
-
-        render(<RequestProvider>
-            <App />
-        </RequestProvider>, container)
+        const history = createMemoryHistory();
+        history.push("/1");
+        render(renderWithRouter(history, <RequestProvider><App /></RequestProvider>))
 
         expect(screen.getByText(/Busca de personagens/i)).toBeInTheDocument();
         const inputSearch = screen.getByTestId("inputSearch");

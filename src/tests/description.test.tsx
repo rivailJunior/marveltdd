@@ -8,7 +8,6 @@ import {
 } from "@testing-library/react";
 import renderer from "react-test-renderer";
 import Description from "../pages/description";
-import { RequestProvider } from "../provider/requestContext";
 import { Router, Route } from "react-router-dom";
 import { createMemoryHistory } from "history";
 import { responseValueMock } from "../characterTypes/requestValueMock";

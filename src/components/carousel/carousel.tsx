@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Carousel } from "react-bootstrap";
-import styles from "./carousel.module.css";
 
 type iCarouselProps = {
     data: [] | any;
@@ -34,7 +33,7 @@ export function CarouselInfor({ data, type }: iCarouselProps): JSX.Element {
                                 >
                                     <img
                                         className="d-block w-100"
-                                        src={`${item?.thumbnail?.path}.${item?.thumbnail?.extension}`}
+                                        src={`${ item?.thumbnail?.path }.${ item?.thumbnail?.extension }`}
                                         alt="First slide"
                                     />
                                     <Carousel.Caption>
