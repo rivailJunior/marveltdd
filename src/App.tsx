@@ -12,15 +12,20 @@ function App(): JSX.Element {
             <RequestProvider>
                 <MarvelHeader
                     leftLabel="Objective"
-                    userName="Rivail"
+                    userName="Rivail  "
                     descriptionRight="Teste front-end"
                 />
-                <Route exact path="/">
-                    <Home />
-                </Route>
-                <Route path="/description">
-                    <Description />
-                </Route>
+                <Switch>
+                    <Route exact path="/">
+                        <Home />
+                    </Route>
+                    <Route path="/description">
+                        <Description />
+                    </Route>
+                    <Route path="/:id">
+                        <Home />
+                    </Route>
+                </Switch>
             </RequestProvider>
         </Router>
     );

@@ -6,25 +6,32 @@ import { MarvelList } from "../../components/list/marvelList";
 import { MarvelPagination } from "../../components/pagination/marvelPagination";
 import styles from "./index.module.css";
 import { MarvelInputSearch } from "../../components/input/marvelInputSearch";
+import { useParams, useHistory } from "react-router-dom";
+import { helperPagination } from "../../helper/helperPagination";
+
 
 function Index(): JSX.Element {
+    const params = useParams<{ id?: string }>()
+    const history = useHistory()
     const { getCharacters, getCharacterByName } = useRequestContext();
     const [list, setList] = useState<[Character]>([] as any);
     const [errInfo, setErrInfo] = useState(false);
+    const pageHelper = helperPagination(parseInt(params.id));
     const [pagination, setPagination] = useState({
         numberPages: 0,
-        currentPage: 0,
+        currentPage: pageHelper.page,
     });
 
     useEffect(() => {
-        getList();
+        getList(parseInt(params.id));
     }, []);
 
     const getList = async (offset?: number) => {
+        const pageHelper = helperPagination(offset);
         try {
-            const response = await getCharacters(10, offset);
+            const response = await getCharacters(10, pageHelper.offset);
             setList(response.results);
-            setPagination({ numberPages: response?.total, currentPage: 0 });
+            setPagination({ numberPages: response?.total, currentPage: pageHelper.page });
         } catch (err) {
             setErrInfo(true);
         }
@@ -44,7 +51,9 @@ function Index(): JSX.Element {
     };
 
     const handleActive = (active: any) => {
-        getList(active);
+        setPagination({ ...pagination, currentPage: active })
+        getList(active + 1);
+        history.push(`/${ active + 1 }`)
     };
 
     return (
@@ -74,6 +83,7 @@ function Index(): JSX.Element {
                 <MarvelPagination
                     total={pagination.numberPages}
                     handleActive={handleActive}
+                    currentPage={pagination.currentPage}
                 />
             </div>
         </div>

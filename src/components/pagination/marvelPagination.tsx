@@ -1,16 +1,18 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Pagination } from "react-bootstrap";
 import styles from "./marvelPagination.module.css";
 
 type iPaginationProps = {
     total: number;
     handleActive?: Function;
+    currentPage: number
 };
 const MarvelPagination = ({
     total,
     handleActive,
+    currentPage
 }: iPaginationProps): JSX.Element => {
-    const [active, setActive] = useState(0);
+    const [active, setActive] = useState(currentPage);
     const [maxAndMin, setMaxAndMin] = useState({ max: 9, min: 0 })
     const totalValues = Array(Math.ceil(total / 10)).fill(0);
     const isToHidePagination =

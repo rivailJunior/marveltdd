@@ -18,26 +18,26 @@ afterEach(() => {
 
 describe("`<MarvelPagination>`", () => {
     test("Render correctly", () => {
-        const container = renderer.create(<MarvelPagination total={100} />);
+        const container = renderer.create(<MarvelPagination total={100} currentPage={0} />);
         container.toJSON();
         expect(container).toMatchSnapshot();
     });
 
     test("Hide pagination if total is less than 10", () => {
-        const { getByTestId } = render(<MarvelPagination total={9} />, container);
+        const { getByTestId } = render(<MarvelPagination total={9} currentPage={0} />, container);
         const pagination = getByTestId("paginationDiv");
         expect(pagination).toHaveClass("noPagination");
     });
 
     test("Show max 10 pagination itens if list is too higher", () => {
-        const { getAllByTestId } = render(<MarvelPagination total={1000} />, container);
+        const { getAllByTestId } = render(<MarvelPagination total={1000} currentPage={0} />, container);
         const pagination = getAllByTestId("paginationItems");
         expect(pagination).toHaveLength(10);
     });
 
     test("Render with first item as active", () => {
         const { getAllByTestId } = render(
-            <MarvelPagination total={1000} handleActive={() => { }} />, container
+            <MarvelPagination total={1000} handleActive={() => { }} currentPage={0} />, container
         );
         const paginationItem = getAllByTestId("paginationItems");
         expect(paginationItem[0].parentNode).toHaveClass("active");
@@ -46,7 +46,7 @@ describe("`<MarvelPagination>`", () => {
     test("Set new item as active", () => {
         const callback = jest.fn();
         const { getByText } = render(
-            <MarvelPagination total={1000} handleActive={callback} />, container
+            <MarvelPagination total={1000} handleActive={callback} currentPage={0} />, container
         );
         fireEvent.click(getByText(/5/i));
         expect(callback).toBeCalledTimes(1);
@@ -56,7 +56,7 @@ describe("`<MarvelPagination>`", () => {
     test("Dont show previous button when index is 0", () => {
         const callback = jest.fn();
         const { getByText } = render(
-            <MarvelPagination total={1000} handleActive={callback} />, container
+            <MarvelPagination total={1000} handleActive={callback} currentPage={0} />, container
         );
         expect(screen.queryByText(/Previous/i)).not.toBeInTheDocument()
     });
@@ -64,7 +64,7 @@ describe("`<MarvelPagination>`", () => {
     test("Show previous button when index is bigger than 0", async () => {
         const callback = jest.fn();
         const { getByText } = render(
-            <MarvelPagination total={1000} handleActive={callback} />, container
+            <MarvelPagination total={1000} handleActive={callback} currentPage={0} />, container
         );
         fireEvent.click(getByText(/5/i));
         const previous = await screen.findByText(/Previous/i)
@@ -74,7 +74,7 @@ describe("`<MarvelPagination>`", () => {
     test("Dont Show First button when index is less than 1", () => {
         const callback = jest.fn();
         render(
-            <MarvelPagination total={1000} handleActive={callback} />, container
+            <MarvelPagination total={1000} handleActive={callback} currentPage={0} />, container
         );
 
         const previous = screen.queryByText(/First/i)
@@ -85,7 +85,7 @@ describe("`<MarvelPagination>`", () => {
     test("Show Last button only when index is bigger than 2 but not when be last", () => {
         const callback = jest.fn();
         render(
-            <MarvelPagination total={1000} handleActive={callback} />, container
+            <MarvelPagination total={1000} handleActive={callback} currentPage={0} />, container
         );
         fireEvent.click(screen.getByText(/9/i));
         fireEvent.click(screen.getByText(/Last/i));
@@ -97,7 +97,7 @@ describe("`<MarvelPagination>`", () => {
     test("Show Last button and only Ten list items on list", async () => {
         const callback = jest.fn();
         render(
-            <MarvelPagination total={1000} handleActive={callback} />, container
+            <MarvelPagination total={1000} handleActive={callback} currentPage={0} />, container
         );
         fireEvent.click(screen.getByText(/9/i));
         fireEvent.click(screen.getByText(/Last/i));
@@ -109,7 +109,7 @@ describe("`<MarvelPagination>`", () => {
     test("Show Next Item when active is bigger than or equal 9", async () => {
         const callback = jest.fn();
         render(
-            <MarvelPagination total={1000} handleActive={callback} />, container
+            <MarvelPagination total={1000} handleActive={callback} currentPage={0} />, container
         );
         fireEvent.click(screen.getByText(/10/i));
         const listItems = await screen.findAllByTestId('paginationItems');
@@ -122,7 +122,7 @@ describe("`<MarvelPagination>`", () => {
     test("Show First button when index is bigger than 1", async () => {
         const callback = jest.fn();
         const { getByText } = render(
-            <MarvelPagination total={1000} handleActive={callback} />, container
+            <MarvelPagination total={1000} handleActive={callback} currentPage={0} />, container
         );
         fireEvent.click(getByText(/3/i));
         const previous = await screen.findByText(/First/i)
@@ -132,7 +132,7 @@ describe("`<MarvelPagination>`", () => {
     test("Set button 1 as active when click first button", async () => {
         const callback = jest.fn();
         render(
-            <MarvelPagination total={1000} handleActive={callback} />, container
+            <MarvelPagination total={1000} handleActive={callback} currentPage={0} />, container
         );
         fireEvent.click(screen.getByText(/9/i));
         const first = await screen.findByText(/First/i)
@@ -143,7 +143,7 @@ describe("`<MarvelPagination>`", () => {
     test("Get previous page when click previous button", () => {
         const callback = jest.fn();
         const { getByText } = render(
-            <MarvelPagination total={1000} handleActive={callback} />, container
+            <MarvelPagination total={1000} handleActive={callback} currentPage={0} />, container
         );
         fireEvent.click(getByText(/5/i));
         expect(callback).toBeCalledTimes(1);
@@ -155,7 +155,7 @@ describe("`<MarvelPagination>`", () => {
     test("Get next page when click next", () => {
         const callback = jest.fn();
         const { getByText } = render(
-            <MarvelPagination total={1000} handleActive={callback} />, container
+            <MarvelPagination total={1000} handleActive={callback} currentPage={0} />, container
         );
         fireEvent.click(getByText(/5/i));
         fireEvent.click(getByText(/Next/i));
