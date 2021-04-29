@@ -6,6 +6,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+
+### yarn 
+
+To Install all dependecies 
+
 ### `yarn start`
 
 Runs the app in the development mode.\
@@ -19,28 +24,30 @@ You will also see any lint errors in the console.
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Explanations
 
-### `yarn eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+  Initially provider/requestContext had more 3 async functions - moved to model/ (with redux)
+  
+  1 - getCharacters
+ 
+  2 - getCharacterByName - now I think its using best API endpoint :)
+ 
+  3 - getCharacter (per id) - not used and remove
+ 
+  I gotta confuse about "maintain state", whether or not to use redux.
+  After first submission and yours feedback, I add redux to control state,
+  but I didn't use other lib to preserve state like redux-persist.
+  
+  About this feedback -> "Não há armazenamento de estado ou histórico".
+  I decide to add redux, not using redux-persist because I thought wasn't necessary,
+  let me know if you want I add an persister to the store.
+  
+  I decide to let Context with one function (getParticipation) just to show you as an example of use. 
+  I could move this to redux or just use as a single async function in description page.
+  
+  Didn't create an unit test to model/characters, because I tested this with config store at App.test.tsx.
+ 
