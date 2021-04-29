@@ -5,7 +5,7 @@ import { ListInformationItem } from "./listInformationItem";
 import { useHistory } from "react-router-dom";
 
 type iProps = {
-    data: [Character];
+    data: Character[];
     errInfor: boolean;
 };
 

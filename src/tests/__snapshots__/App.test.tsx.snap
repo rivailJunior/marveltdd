@@ -20,31 +20,12 @@ exports[`\`<App>\` Render correctly 1`] = `
         <div
           className="col-md-3"
         >
-          <div>
-            <label
-              className="labelSearch"
-              htmlFor=""
-            >
-              Nome do personagem
-            </label>
-            <div
-              className="mb-3 inputGroup input-group"
-            >
-              <input
-                aria-label="Busque personagens"
-                className="inputSearch form-control"
-                data-testid="inputSearch"
-                onChange={[Function]}
-                placeholder="Search"
-                value=""
-              />
-              <img
-                alt=""
-                className="icon"
-                src="/mar.png"
-              />
-            </div>
-          </div>
+          <input
+            data-testid="inputSearch"
+            onChange={[Function]}
+            type="text"
+            value="Capitao america"
+          />
         </div>
       </div>
       <div
@@ -54,12 +35,12 @@ exports[`\`<App>\` Render correctly 1`] = `
           className="col-md-12 col-12"
         >
           <div
-            className="labelHeader hideList"
+            className="labelHeader showList"
           >
             Nenhum personagem encontrado
           </div>
           <div
-            className="showList list-group list-group-flush"
+            className="hideList list-group list-group-flush"
             onKeyDown={[Function]}
           >
             <div

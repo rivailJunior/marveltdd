@@ -27,14 +27,14 @@ const getParticipation = async (id: number, type: string): Promise<any> => {
     return result.data?.data
 }
 
-const getCharacter = async (id: number): Promise<Character> => {
+const getCharacter = async (id: number): Promise<[Character]> => {
     const result = await getService(`/characters/${ id }`, {})
     return result.data?.data?.results
 }
 
-const getCharacterByName = async (name: string): Promise<Character> => {
+const getCharacterByName = async (name: string): Promise<CharacterDataContainer> => {
     const result = await getService(`/characters?nameStartsWith=${ name }`, {})
-    return result.data?.data?.results
+    return result.data?.data
 }
 
 export { getCharacters, getCharacter, getParticipation, getCharacterByName };

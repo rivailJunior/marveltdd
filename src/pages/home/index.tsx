@@ -1,57 +1,40 @@
-import { useEffect, useState } from "react";
-import { useRequestContext } from "../../provider/requestContext";
+import { useEffect } from "react";
 import { Container, Jumbotron, Row, Col } from "react-bootstrap";
-import { Character } from "../../characterTypes/characters";
 import { MarvelList } from "../../components/list/marvelList";
 import { MarvelPagination } from "../../components/pagination/marvelPagination";
 import styles from "./index.module.css";
-import { MarvelInputSearch } from "../../components/input/marvelInputSearch";
+import MarvelInputSearch from "../../components/input/marvelInputSearch";
 import { useParams, useHistory } from "react-router-dom";
 import { helperPagination } from "../../helper/helperPagination";
+import { useDispatch, useSelector } from "react-redux";
+import { Dispatch, RootState } from "../../model/storeConfig";
 
 
 function Index(): JSX.Element {
     const params = useParams<{ id?: string }>()
-    const history = useHistory()
-    const { getCharacters, getCharacterByName } = useRequestContext();
-    const [list, setList] = useState<[Character]>([] as any);
-    const [errInfo, setErrInfo] = useState(false);
+    const history = useHistory();
+    const dispatch = useDispatch<Dispatch>();
+    const state = useSelector((state: RootState) => state);
+    const { charactersModel } = state;
+    const { characters, total } = charactersModel;
     const pageHelper = helperPagination(parseInt(params.id));
-    const [pagination, setPagination] = useState({
-        numberPages: 0,
-        currentPage: pageHelper.page,
-    });
-
     useEffect(() => {
         getList(parseInt(params.id));
     }, []);
 
     const getList = async (offset?: number) => {
         const pageHelper = helperPagination(offset);
-        try {
-            const response = await getCharacters(10, pageHelper.offset);
-            setList(response.results);
-            setPagination({ numberPages: response?.total, currentPage: pageHelper.page });
-        } catch (err) {
-            setErrInfo(true);
-        }
+        dispatch.charactersModel.getAll({ offset: pageHelper.offset, total: 10, currentPage: pageHelper.page })
     };
 
     const getByName = async (name: string) => {
-        try {
-            if (name.length > 0) {
-                const response: [Character] = await getCharacterByName(name);
-                return response.length && setList(response);
-            }
-            getList()
-
-        } catch (err) {
-            setErrInfo(true);
+        if (name.length > 0) {
+            return dispatch.charactersModel.get(name);
         }
+        return getList(parseInt(params.id))
     };
 
     const handleActive = (active: any) => {
-        setPagination({ ...pagination, currentPage: active })
         getList(active + 1);
         history.push(`/${ active + 1 }`)
     };
@@ -73,7 +56,7 @@ function Index(): JSX.Element {
                         </Row>
                         <Row>
                             <Col md={12} xs={12}>
-                                <MarvelList data={list} errInfor={errInfo} />
+                                <MarvelList data={characters} errInfor={!characters.length} />
                             </Col>
                         </Row>
                     </>
@@ -81,9 +64,9 @@ function Index(): JSX.Element {
             </Jumbotron>
             <div className={styles.paginationDiv}>
                 <MarvelPagination
-                    total={pagination.numberPages}
+                    total={total}
                     handleActive={handleActive}
-                    currentPage={pagination.currentPage}
+                    currentPage={pageHelper.page}
                 />
             </div>
         </div>

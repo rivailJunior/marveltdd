@@ -37,3 +37,4 @@ const MarvelInputSearch = ({ handleChangeName }: iInputProps) => {
 };
 
 export { MarvelInputSearch };
+export default MarvelInputSearch;

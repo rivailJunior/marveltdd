@@ -2,18 +2,16 @@
 import {
     screen,
     render,
-    fireEvent
 } from "@testing-library/react";
 import renderer from "react-test-renderer";
-import App from "../pages/home";
+import App from "../App";
 import { RequestProvider } from "../provider/requestContext";
 import { unmountComponentAtNode } from "react-dom";
 
-import { Router, Route } from "react-router-dom";
+import { Router } from "react-router-dom";
 import { createMemoryHistory } from "history";
 import { Provider } from 'react-redux'
 import { store } from "../model/storeConfig";
-import { act } from "react-dom/test-utils";
 
 const renderWithRouter = (history: any, component: any) => {
     return <Provider store={store}><Router history={history}>{component}</Router></Provider>;
@@ -62,22 +60,8 @@ describe("`<App>`", () => {
         expect(screen.getByText(/Busca de personagens/i)).toBeInTheDocument();
         const inputSearch = screen.getByTestId("inputSearch");
         expect(inputSearch).toBeInTheDocument();
-
-        fireEvent.change(inputSearch, {
-            target: {
-                value: 'Capitao america'
-            }
-        })
         expect(screen.queryByText(/Nenhum personagem encontrado/)).toBeInTheDocument()
         expect(inputSearch.value).toBe("Capitao america");
-
-        expect(store.getState()).toEqual({
-            charactersModel: {
-                characters: [],
-                currentPage: 0,
-                total: 0
-            },
-        })
     });
 
 });

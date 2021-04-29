@@ -8,7 +8,6 @@ describe('Services Request', () => {
     test('Request 10 characters to show in list', async () => {
         const result = await getCharacters(10);
         expect(result.results).toHaveLength(10)
-        // expect(result).toEqual(responseValueMock.data)
     })
 
     test('Show err on Request 1 character to show in serach ', async () => {
@@ -31,7 +30,7 @@ describe('Services Request', () => {
 
     test("Get Character by user name", async () => {
         const character = await getCharacterByName('3-D Man');
-        expect(character[0].name).toEqual('3-D Man')
+        expect(character.results[0].name).toEqual('3-D Man')
     })
 
     test("Get ERR when dont pass Character id ", async () => {

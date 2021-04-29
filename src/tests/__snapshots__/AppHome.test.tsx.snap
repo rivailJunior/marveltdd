@@ -1,0 +1,170 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`\`<App>\` Render correctly 1`] = `
+Array [
+  <nav
+    className="marvelHeader navbar navbar-expand-lg navbar-light bg-light"
+  >
+    <a
+      className="navbar-brand"
+      href="/"
+    >
+      Objective
+    </a>
+    <button
+      aria-label="Toggle navigation"
+      className="navbar-toggler collapsed"
+      onClick={[Function]}
+      type="button"
+    >
+      <span
+        className="navbar-toggler-icon"
+      />
+    </button>
+    <div
+      aria-expanded={null}
+      className="justify-content-end navbar-collapse collapse"
+    >
+      <span
+        className="labelName navbar-text"
+      >
+        Rivail  
+        <a
+          href="#login"
+        >
+          Teste front-end
+        </a>
+      </span>
+    </div>
+  </nav>,
+  <div>
+    <div
+      className="jumbotron"
+    >
+      <div
+        className="container"
+      >
+        <h1
+          className="labelHeader"
+          data-testid="labelheader"
+        >
+          Busca de personagens
+        </h1>
+        <div
+          className="row"
+        >
+          <div
+            className="col-md-3"
+          >
+            <input
+              data-testid="inputSearch"
+              onChange={[Function]}
+              type="text"
+              value="Capitao america"
+            />
+          </div>
+        </div>
+        <div
+          className="row"
+        >
+          <div
+            className="col-md-12 col-12"
+          >
+            <div
+              className="labelHeader showList"
+            >
+              Nenhum personagem encontrado
+            </div>
+            <div
+              className="hideList list-group list-group-flush"
+              onKeyDown={[Function]}
+            >
+              <div
+                className="list-group-item"
+                data-rb-event-key={null}
+                disabled={false}
+                onClick={[Function]}
+                style={
+                  Object {
+                    "backgroundColor": "transparent",
+                  }
+                }
+              >
+                <div
+                  className="row"
+                >
+                  <div
+                    className="col-md-2"
+                  />
+                  <div
+                    className="col-md-2"
+                  >
+                    <div
+                      className="defaultLabel"
+                    >
+                      Personagem
+                    </div>
+                  </div>
+                  <div
+                    className="d-none d-lg-block col-md-4"
+                  >
+                    <div
+                      className="defaultLabel"
+                    >
+                      Séries
+                    </div>
+                  </div>
+                  <div
+                    className="d-none d-lg-block col-md-4"
+                  >
+                    <div
+                      className="defaultLabel"
+                    >
+                      Eventos
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              className="listGroup list-group"
+              onKeyDown={[Function]}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="paginationDiv"
+    >
+      <ul
+        className="noPagination pagination"
+        data-testid="paginationDiv"
+      >
+        <li
+          className="paginationItem page-item"
+        >
+          <a
+            className="page-link"
+            href="#"
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            role="button"
+          >
+            <span
+              aria-hidden="true"
+            >
+              ›
+            </span>
+            <span
+              className="sr-only"
+            >
+              Next
+            </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>,
+]
+`;
